@@ -4,7 +4,7 @@
 <?php require_once("includes/navigation.php"); ?>
 <?php
 if (isset($_SESSION["session_username"])) {
-    header("location:");
+    header("location: index.php");
 }
 ?>
 <?php

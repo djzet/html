@@ -44,4 +44,4 @@ if (isset($_POST["register"])) {
         </form>
     </div>
 </div>
-<?php include("includes/footer.php"); ?>
+<?php require_once("includes/footer.php"); ?>
