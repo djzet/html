@@ -1,10 +1,9 @@
-<?php session_start(); ?>
 <?php require_once("includes/connection.php"); ?>
 <?php require_once("includes/header.php"); ?>
 <?php require_once("includes/navigation.php"); ?>
 <?php
 if (isset($_SESSION["session_username"])) {
-    header("location: index.php");
+    header("location:");
 }
 ?>
 <?php
@@ -15,10 +14,11 @@ if (isset($_POST["login"])) {
         $username = htmlspecialchars($_POST['username']);
         $password = htmlspecialchars($_POST['password']);
         $query = mysqli_query($conn, "SELECT * FROM `users` WHERE `username` = '$username' AND `password` = '$password'");
+        $res = mysqli_fetch_assoc($query);
         $numrows = mysqli_num_rows($query);
         if ($numrows != 0) {
             $_SESSION['session_username'] = $username;
-            $_SESSION['session_id'] = $id;
+            $_SESSION['session_id'] = $res['id_username'];
             if (isset($_SESSION["session_username"])) {
                 header("location: intropage.php");;
             } else {

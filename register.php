@@ -25,7 +25,6 @@ if (isset($_POST["register"])) {
     }
 }
 ?>
-
 <?php if (!empty($message)) {
     echo "<p class='error'>" . $message . "</p>";
 } ?>

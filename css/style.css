@@ -21,6 +21,29 @@ body {
     height: 40px;
 }
 
+.view{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    width: 800px;
+}
+
+.view > h3{
+    margin-left: 50px;
+}
+
+.view > p{
+    margin-left: 50px;
+}
+
+.view > a{
+    margin-left: 50px;
+}
+
+
 a {
     color: #f58220;
     font-weight: 400;
