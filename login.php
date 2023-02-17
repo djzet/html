@@ -20,7 +20,12 @@ if (isset($_POST["login"])) {
             $_SESSION['session_username'] = $username;
             $_SESSION['session_id'] = $res['id_username'];
             if (isset($_SESSION["session_username"])) {
-                header("location: intropage.php");;
+                if($_SESSION["session_username"] == 'admin'){
+                    header("location: admin.php");
+                }else{
+                    header("location: intropage.php");
+                }
+
             } else {
                 echo "Неверное имя пользователя или пароль!";
             }
