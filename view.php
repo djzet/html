@@ -2,14 +2,19 @@
 <?php require_once("includes/header.php"); ?>
 <?php require_once("includes/navigation_admin.php"); ?>
 <?php
-$query = "SELECT * FROM (user_route inner join route on user_route.id_name = route.id_name) inner join users on user_route.id_username = users.id_username";
+//$query = "SELECT * FROM (user_route inner join route on user_route.id_name = route.id_name) inner join users on user_route.id_username = users.id_username";
+$query = "SELECT *  FROM user_route
+            LEFT JOIN users ON user_route.id_username = users.id_username
+            LEFT JOIN route ON user_route.id_name = route.id_name
+";
 $res = mysqli_query($conn, $query);
 if (!$res) die (mysqli_error($conn));
 ?>
-<div class="view">
+
 <?php
 while ($row = mysqli_fetch_assoc($res)) {
    ?>
+   <div class="view">
     <table>
         <tr>
             <td>Название маршрута</td>
@@ -22,8 +27,7 @@ while ($row = mysqli_fetch_assoc($res)) {
             <td><?= $row['count']; ?></td>
         </tr>
     </table>
+    </div>
 <?php
 }
-?>
-</div>
-<?php require_once("includes/footer.php"); ?>
+require_once("includes/footer.php"); ?>
