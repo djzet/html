@@ -2,9 +2,7 @@
 <?php require_once("includes/header.php"); ?>
 <?php require_once("includes/navigation_admin.php"); ?>
 <?php
-// Если флаг на добавление, до добавляем запись
 if (!empty($_POST['submit']) && $_POST['submit'] == 'Добавить') {
-   // Очищаем пришедшие данные от HTML и PHP тегов
    $name = strip_tags($_POST['name']);
    $count = strip_tags($_POST['count']);
    $query = "INSERT INTO route (name, count) VALUES ('$name', '$count')";

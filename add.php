@@ -8,14 +8,11 @@ if(isset($_GET['add']) && isset($_GET['id'])){
    $res = mysqli_query($conn, $query);
    header('Location: intropage.php');
 }
-// $query = "SELECT * FROM users inner join user_route on users.id_username = user_route.id_username WHERE users.id_username = user_route.id_username";
-$query = "SELECT * FROM users
-            WHERE EXISTS(SELECT * FROM user_route WHERE id_username=$_SESSION[session_username])
-";
+$query = "SELECT users.id_username FROM users inner join user_route on users.id_username = user_route.id_username WHERE user_route.id_username = $_SESSION[session_id] AND users.id_username IN ( SELECT user_route.id_username FROM user_route)";
 $res = mysqli_query($conn, $query);
-echo 'gdfgdfg';
-$numrows = mysqli_num_rows($query);
-if(!$numrows){
+if (!$res) die (mysqli_error($conn));
+$numrows = mysqli_num_rows($res);
+if($numrows){
    ?>
       <div class="view">
          <h3><?= $_SESSION['session_username']; ?> ждите звонка</h3>

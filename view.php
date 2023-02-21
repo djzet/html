@@ -2,15 +2,12 @@
 <?php require_once("includes/header.php"); ?>
 <?php require_once("includes/navigation_admin.php"); ?>
 <?php
-//$query = "SELECT * FROM (user_route inner join route on user_route.id_name = route.id_name) inner join users on user_route.id_username = users.id_username";
 $query = "SELECT *  FROM user_route
-            LEFT JOIN users ON user_route.id_username = users.id_username
-            LEFT JOIN route ON user_route.id_name = route.id_name
-";
+            INNER JOIN users ON user_route.id_username = users.id_username
+            INNER JOIN route ON user_route.id_name = route.id_name";
 $res = mysqli_query($conn, $query);
 if (!$res) die (mysqli_error($conn));
 ?>
-
 <?php
 while ($row = mysqli_fetch_assoc($res)) {
    ?>

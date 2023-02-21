@@ -2,7 +2,6 @@
 <?php require_once("includes/header.php"); ?>
 <?php require_once("includes/navigation_admin.php"); ?>
 <?php
-// Если флаг на добавление, до добавляем запись
 if (isset($_GET['del']) && isset($_GET['id'])) {
     $query = "DELETE FROM `route` WHERE id_name = '$_GET[id]'";
     $res = mysqli_query($conn, $query);
